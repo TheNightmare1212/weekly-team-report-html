@@ -19,9 +19,17 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "my-report.html",
+      filename: 'index.html',
+      hash: true,
+      alwaysWriteToDisk: true,
+      template: './index.html'
     }),
-
+    new HtmlWebpackPlugin({
+      filename: 'my-report.html',
+      hash: true,
+      alwaysWriteToDisk: true,
+      template: './my-report.html'
+    }),
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
