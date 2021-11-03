@@ -34,7 +34,7 @@ const config = {
         template: "invite-your-team.html",
         filename: "invite-your-team.html",
     }),
-    // Add your plugins here
+    
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
   module: {
