@@ -30,6 +30,10 @@ const config = {
       alwaysWriteToDisk: true,
       template: './my-report.html'
     }),
+    new HtmlWebpackPlugin({
+        template: "invite-your-team.html",
+        filename: "invite-your-team.html",
+    }),
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
