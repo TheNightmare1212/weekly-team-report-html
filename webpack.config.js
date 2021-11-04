@@ -8,6 +8,12 @@ const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = "style-loader";
 
+const fs = require('fs');
+const pages =
+  fs
+    .readdirSync(path.resolve(__dirname, './'))
+    .filter(fileName => fileName.endsWith('.html'))
+
 const config = {
   entry: "./src/index.js",
   output: {
@@ -17,25 +23,14 @@ const config = {
     open: true,
     host: "localhost",
   },
+  // Use .map() on the array of file names to map each file name
+  // to the plugin instance, then spread the mapped array into
+  // the plugins array.
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      hash: true,
-      alwaysWriteToDisk: true,
-      template: './index.html'
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'my-report.html',
-      hash: true,
-      alwaysWriteToDisk: true,
-      template: './my-report.html'
-    }),
-    new HtmlWebpackPlugin({
-        template: "invite-your-team.html",
-        filename: "invite-your-team.html",
-    }),
-    
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    ...pages.map(page => new HtmlWebpackPlugin({
+      template: page,
+      filename: page,
+    }))
   ],
   module: {
     rules: [
